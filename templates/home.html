@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Catálogo de Jogos{% endblock %}
+{% block content %}
+<section class="intro">
+    <p class="eyebrow">ACERVO DIGITAL</p>
+    <h1>Explore o catálogo</h1>
+    <p>Consulte jogos de diferentes épocas, gêneros e plataformas.</p>
+</section>
+
+<section class="panel">
+    <h2>Adicionar jogo</h2>
+    <form method="POST" action="{{ url_for('home') }}" class="form-grid">
+        <label>Título
+            <input type="text" name="title" maxlength="120" required>
+        </label>
+        <label>Gênero
+            <input type="text" name="genre" maxlength="80" required>
+        </label>
+        <label>Plataformas de lançamento
+            <input type="text" name="platforms" maxlength="180" placeholder="Ex.: PC; PlayStation 5" required>
+        </label>
+        <label>Ano de lançamento
+            <input type="number" name="release_year" min="1950" max="2100" required>
+        </label>
+        <label>Arquivo do pôster
+            <input type="text" name="poster" placeholder="Ex.: tomb.jpeg" required>
+        </label>
+        <div class="form-action"><button type="submit">Cadastrar jogo</button></div>
+    </form>
+</section>
+
+<div class="section-heading">
+    <div><p class="eyebrow">COLEÇÃO</p><h2>Jogos cadastrados</h2></div>
+    <span class="count">{{ games|length }} jogo(s)</span>
+</div>
+
+{% if games %}
+<div class="game-grid">
+    {% for game in games %}
+    <article class="game-card">
+        <img src="{{ url_for('static', filename='img/' + game.poster) }}" alt="Pôster de {{ game.title }}" class="poster">
+        <div class="game-info">
+            <p class="game-year">{{ game.release_year }} • {{ game.genre }}</p>
+            <h3>{{ game.title }}</h3>
+            <p class="platforms">{{ game.platforms }}</p>
+            <div class="card-actions">
+                <a href="{{ url_for('edit', game_id=game.id) }}" role="button" class="secondary">Editar</a>
+                <form method="POST" action="{{ url_for('delete', game_id=game.id) }}" onsubmit="return confirm('Deseja realmente excluir este jogo?');">
+                    <button type="submit" class="contrast outline">Excluir</button>
+                </form>
+            </div>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% else %}
+<article><p>Nenhum jogo encontrado. Cadastre um novo jogo para começar.</p></article>
+{% endif %}
+{% endblock %}

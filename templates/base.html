@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Catálogo de Jogos{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pico.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="container">
+            <ul><li><a href="{{ url_for('home') }}" class="brand">🎮 Catálogo de Jogos</a></li></ul>
+            <ul><li><a href="{{ url_for('home') }}">Início</a></li></ul>
+        </nav>
+    </header>
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <article class="notice {{ category }}">{{ message }}</article>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="container site-footer">
+        <small>Catálogo de Jogos • Atividade de Desenvolvimento Web - Back-end</small>
+    </footer>
+</body>
+</html>
