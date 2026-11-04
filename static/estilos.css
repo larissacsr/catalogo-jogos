@@ -1,0 +1,39 @@
+:root { --pico-font-size: 100%; }
+body { background: #f4f6fa; color: #202638; }
+.site-header { background: #171b2e; color: #fff; padding: .7rem 0; }
+.site-header nav { margin-bottom: 0; }
+.site-header a { color: #fff; text-decoration: none; }
+.brand { font-weight: 800; letter-spacing: .02em; }
+main.container { padding-top: 2.2rem; padding-bottom: 2rem; }
+.intro { margin-bottom: 2rem; }
+.intro h1 { margin-bottom: .4rem; font-size: clamp(2rem, 4vw, 3rem); }
+.intro p:not(.eyebrow) { color: #667085; }
+.eyebrow { color: #5365a8; font-size: .72rem; font-weight: 800; letter-spacing: .14em; margin-bottom: .45rem; }
+.panel, .filters { background: #fff; border: 1px solid #e5e8ef; border-radius: 14px; padding: 1.3rem; margin-bottom: 1.2rem; }
+.panel h2, .section-heading h2 { font-size: 1.35rem; margin-bottom: 1rem; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem 1rem; }
+.form-grid label, .filter-grid label { margin-bottom: 0; }
+.form-action { display: flex; align-items: end; }
+.form-action button { width: 100%; margin-bottom: 0; }
+.filter-grid { display: grid; grid-template-columns: 2fr 1fr auto; gap: 1rem; align-items: end; }
+.filter-actions { display: flex; gap: .5rem; }
+.filter-actions button, .filter-actions a { margin-bottom: 0; white-space: nowrap; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; margin: 2rem 0 1rem; }
+.section-heading h2 { margin-bottom: 0; }
+.count { color: #667085; font-size: .9rem; }
+.game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 1rem; }
+.game-card { padding: 0; overflow: hidden; border: 1px solid #e5e8ef; border-radius: 14px; background: #fff; box-shadow: 0 5px 18px rgba(27, 37, 69, .06); }
+.poster { display: block; width: 100%; height: 330px; object-fit: contain; object-position: center; background: #151827; }
+.game-info { padding: 1rem; }
+.game-year { color: #64709a; font-size: .78rem; font-weight: 700; margin-bottom: .35rem; }
+.game-info h3 { font-size: 1.08rem; min-height: 2.6em; margin-bottom: .45rem; }
+.platforms { color: #667085; font-size: .84rem; min-height: 2.5em; }
+.card-actions, .inline-actions { display: flex; gap: .55rem; align-items: center; }
+.card-actions a, .card-actions button, .inline-actions a, .inline-actions button { margin-bottom: 0; padding: .55rem .8rem; font-size: .85rem; }
+.card-actions form { margin: 0; flex: 1; }
+.card-actions a { flex: 1; }
+.notice { padding: .8rem 1rem; margin-bottom: 1rem; border-radius: 8px; }
+.notice.success { background: #e8f7ef; color: #17643b; }
+.notice.error { background: #fff0ef; color: #a12a24; }
+.site-footer { color: #7b8293; border-top: 1px solid #e5e8ef; padding-top: 1rem; }
+@media (max-width: 700px) { .form-grid, .filter-grid { grid-template-columns: 1fr; } .filter-actions { flex-wrap: wrap; } .poster { height: 300px; } }
